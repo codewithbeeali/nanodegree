@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width:900px;
+    height: 700px;
+    background-color: red;
+
+    /*Enabling a grid */
+    display: grid;
+    /* grid-template-columns: repeat(4,1fr); */
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-rows: 50px 1fr 100px;
+    /* grid-template-rows: repeat(3, 1fr); */
+
+}
+
+.grid-col-span-4{
+     grid-column-start: 1;
+    grid-column-end: 5; 
+}
+
+.grid-col-span-3{
+    grid-column-start: 2;
+    grid-column-end:  5;
+}
+
+.header{
+    background-color: blue;
+}
+
+.blogposts{
+    background-color: white;;
+}
+
+.footer{
+    background-color: black;
+}
