@@ -3,7 +3,38 @@ body{
     padding: 0;
 }
 
-.container{
+h1{
+    font-size: 1.2em;
+}
+
+ul{
+    list-style-type: none;
+    
+}
+a{
+    text-decoration: none;
+}
+
+ul li a{
+    color: white;;
+}
+
+.button-style-with-background{
+    border: 1px solid #0000ff;
+    padding: 4px;
+    text-decoration: none;
+    background-color: blue;
+
+}
+
+p{
+    font-size: 2em;
+    font-weight: 100;
+    margin: 0px;
+    font-weight: normal;
+}
+
+.container-outergrid{
     width:900px;
     height: 700px;
     background-color: red;
@@ -12,13 +43,38 @@ body{
     display: grid;
     /* grid-template-columns: repeat(4,1fr); */
     grid-template-columns: 200px 1fr 1fr 1fr;
-    grid-template-rows: 50px 1fr 100px;
+    grid-template-rows: 90px 1fr 50px;
     /* grid-template-rows: repeat(3, 1fr); */
+    column-gap: 10px;
+    row-gap: 30px;;
+
+}
+
+.inner-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;;
+
+}
+
+.item1{
+    background-color: aqua;
+}
+
+.item2{
+    background-color: yellow;
+}
+
+.item3{
+    background-color: green;
+}
+
+.item3{
 
 }
 
 .grid-col-span-4{
-     grid-column-start: 1;
+    grid-column-start: 1;
     grid-column-end: 5; 
 }
 
@@ -37,4 +93,11 @@ body{
 
 .footer{
     background-color: black;
+    color: white;
+    font-size: 10px
+}
+
+.footer p{
+    font-size: 1.25em;
+    padding: 10px;;
 }
