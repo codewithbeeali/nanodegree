@@ -1,0 +1,47 @@
+/* General Styling */
+body{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-size: 1.2em;
+    padding: 8px;
+}
+
+ul{
+    /* list-style-type: circle; */
+    
+}
+
+p{
+    font-size: 1em;
+    font-weight: 100;
+    margin: 0px;
+    font-weight: normal;
+    padding: 8px;
+    line-height: 1em;
+}
+
+/* styling links */
+a{
+    text-decoration: none;
+    color:#15abdd;
+    font-size: 1em;;
+}
+
+
+/* Blog post grid container */
+.blog-post-container{
+    max-width:100vw;
+    height: auto;
+    display: grid;
+    /* grid-template-columns:  repeat(3,1fr); */
+    grid-template-columns: 900px repeat(1, 1fr );
+    grid-template-rows: auto;
+    /* background-color: red; */
+    border: 1px solid black;
+}
+
+
+
