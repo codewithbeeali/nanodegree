@@ -39,16 +39,18 @@ a{
     max-width:100vw;
     height: auto;
     display: flex; 
+    flex-wrap: wrap;
 }  
 
 .blog-post-left-content{
     background-color: var(--primary-color);
     flex: 3;
+    min-width: 400px;
 }
 
 .blog-post-right-bar{
     background-color: beige ;
-    width: 400px;
+    min-width: 400px;
     
 }
     
