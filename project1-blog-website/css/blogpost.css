@@ -1,5 +1,5 @@
 /* General Styling */
-body{
+body, p, h1, h2, h3, h4, h5{
     margin: 0;
     padding: 0;
 }
@@ -30,17 +30,24 @@ a{
 }
 
 
-/* Blog post grid container */
+/* Blog post flex container */
 .blog-post-container{
     max-width:100vw;
     height: auto;
-    display: grid;
-    /* grid-template-columns:  repeat(3,1fr); */
-    grid-template-columns: 900px repeat(1, 1fr );
-    grid-template-rows: auto;
-    /* background-color: red; */
-    border: 1px solid black;
+    display: flex; 
+}  
+
+.blog-post-left-content{
+    background-color: aquamarine;
+    flex: 3;
 }
+
+.blog-post-right-bar{
+    background-color: beige ;
+    width: 400px;
+    
+}
+    
 
 
 
