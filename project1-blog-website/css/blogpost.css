@@ -1,7 +1,11 @@
+@import url('./variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+
 /* General Styling */
 body, p, h1, h2, h3, h4, h5{
     margin: 0;
     padding: 0;
+    font-family: 'Roboto';
 }
 
  h1{
@@ -26,7 +30,7 @@ p{
 a{
     text-decoration: none;
     color:#15abdd;
-    font-size: 1em;;
+    font-size: var(--primary-font-size);
 }
 
 
@@ -38,7 +42,7 @@ a{
 }  
 
 .blog-post-left-content{
-    background-color: aquamarine;
+    background-color: var(--primary-color);
     flex: 3;
 }
 
