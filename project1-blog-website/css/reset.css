@@ -1,0 +1,24 @@
+/* General Styling */
+body{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    font-size: 1.2em;
+    padding: 8px;
+}
+
+ul{
+    list-style-type: none;
+    
+}
+
+p{
+    font-size: 2em;
+    font-weight: 100;
+    margin: 0px;
+    font-weight: normal;
+    padding: 8px;
+    line-height: 1em;
+}
