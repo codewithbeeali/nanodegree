@@ -60,13 +60,12 @@ p{
 /* Sections starts here */
 .sections{
     width: 100vw;
-    background-color: red;
+    /* background-color: red; */
 }
 
 .section1, .section2{
     display: flex;
-    height: 844px;
-    border: 1px solid blue;
+    height: calc(100vh - 64px);
     color:white;
 }
 
@@ -78,29 +77,35 @@ p{
     background: #5D4037;;
 }
 
-.imageContent{
-    width: 816px;
+.section1 .imageContent{
+    width:55vw;
     flex-shrink: 0;
 }
 
 
 .section2 .imageContent{
-    width: 696px;
+    width: 45vw;;
 }
 
 
 .contentArea, .contentArea2{
     display: flex;
     padding:16px;
-   
-}
-
-.content, .content2{
+    flex:1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+   
 }
+
+
+/* .content, .content2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+} */
 
 .sectionHeader{
    align-self: flex-end; 
