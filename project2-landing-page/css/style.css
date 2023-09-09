@@ -67,6 +67,7 @@ p{
     display: flex;
     height: 844px;
     border: 1px solid blue;
+    color:white;
 }
 
 .section1{
@@ -82,8 +83,15 @@ p{
     flex-shrink: 0;
 }
 
+
+.section2 .imageContent{
+    width: 696px;
+}
+
+
 .contentArea, .contentArea2{
     display: flex;
+    padding:16px;
    
 }
 
@@ -96,6 +104,15 @@ p{
 
 .sectionHeader{
    align-self: flex-end; 
+}
+
+.sectionHeader, .sectionHeader2{
+    color: #FFF;
+    font-family: Inter;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal
 }
 
 .sectionContent{
