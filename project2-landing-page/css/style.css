@@ -60,16 +60,22 @@ p{
 /* Sections starts here */
 .sections{
     width: 100vw;
-  
     background-color: red;
 }
 
-.section1, section2{
+.section1, .section2{
     display: flex;
     height: 844px;
     border: 1px solid blue;
 }
 
+.section1{
+    background: #8D6E63;
+}
+
+.section2{
+    background: #5D4037;;
+}
 
 .imageContent{
     width: 816px;
@@ -84,14 +90,16 @@ p{
 .content, .content2{
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .sectionHeader{
-    align-self: flex-end;
+   align-self: flex-end; 
 }
 
 .sectionContent{
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
 }
 
 /* Sections end here */
