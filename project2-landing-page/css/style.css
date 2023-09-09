@@ -29,7 +29,7 @@ p{
 
 /* styling of header starts here */
 .header {
-    width:100vw ;
+    max-width:100vw ;
     height: 63px; /* This heigh needs to change */
     background-color: #3E2723;
     border: 1px solid black;
@@ -54,36 +54,41 @@ p{
     align-self: center;
 }
 
+.menuItem.active {
+    font-weight: bold;
+    background-color: red;
+}
+
 /* header styling ends here */
 
 
 /* Sections starts here */
 .sections{
-    width: 100vw;
+    max-width: 100vw;
     /* background-color: red; */
 }
 
-.section1, .section2{
+.odd-section, .even-section{
     display: flex;
     height: calc(100vh - 64px);
     color:white;
 }
 
-.section1{
+.odd-section{
     background: #8D6E63;
 }
 
-.section2{
+.even-section{
     background: #5D4037;;
 }
 
-.section1 .imageContent{
+.odd-section .imageContent{
     width:55vw;
     flex-shrink: 0;
 }
 
 
-.section2 .imageContent{
+.even-section .imageContent{
     width: 45vw;;
 }
 
