@@ -5,8 +5,9 @@ body{
 }
 
 h1{
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     padding: 8px;
+    color: #FFF; 
 }
 
 ul{
@@ -89,12 +90,11 @@ p{
 
 
 .even-section .imageContent{
-    width: 45vw;;
+    width: 44.2vw;;
 }
 
 
-.contentArea, .contentArea2{
-    display: flex;
+.odd-content-area, .even-content-area{
     padding:16px;
     flex:1;
     display: flex;
@@ -112,11 +112,12 @@ p{
     justify-content: space-between;
 } */
 
-.sectionHeader{
+.odd-section-header{
    align-self: flex-end; 
 }
 
-.sectionHeader, .sectionHeader2{
+
+.odd-section-header p, .even-section-header p{
     color: #FFF;
     font-family: Inter;
     font-size: 48px;
@@ -125,8 +126,44 @@ p{
     line-height: normal
 }
 
-.sectionContent{
-    /* justify-self: flex-end; */
+.odd-section-content, .even-section-content{
+color: #FFF;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 
-/* Sections end here */
+
+/** ------------- Chatgpt **/
+/* Remove these styles */
+.odd-section .imageContent {
+    width: 55%;
+    flex-shrink: 0;
+}
+
+.even-section .imageContent {
+    width: 44.2%;
+}
+
+/* Add these styles */
+.odd-section, .even-section {
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.odd-section .imageContent,
+.even-section .imageContent {
+    width: 100%; /* Let images take full width */
+}
+
+.odd-content-area,
+.even-content-area {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center text content */
+    text-align: center; /* Center text content */
+}
+
