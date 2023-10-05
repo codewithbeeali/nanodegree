@@ -189,6 +189,16 @@ ul li a{
     background-color: white;;
 }
 
+.card a{
+    justify-self: center;
+}
+
+.card-button{
+    padding:8px;
+    width:200px;
+    justify-self: center;
+}
+
 @media only screen and (max-width: 768px) {
     .container-outergrid {
         grid-template-columns: 1fr;
