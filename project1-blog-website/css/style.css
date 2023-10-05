@@ -191,12 +191,24 @@ ul li a{
 
 .card a{
     justify-self: center;
+    margin-bottom: 1rem;
+}
+
+.card-button:hover{
+    border: 1px solid black;
+    
 }
 
 .card-button{
-    padding:8px;
-    width:200px;
-    justify-self: center;
+    padding: 8px 32px;
+    color: white;
+    background-color: #13acdd;
+    cursor: pointer;
+    border: 1px solid #13acdd;
+    border-radius: 4px;
+    transition: all 0.2s;
+
+
 }
 
 @media only screen and (max-width: 768px) {
