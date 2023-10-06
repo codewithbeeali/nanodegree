@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+    .container-outergrid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 125px 1fr 1fr 50px;
+    }
+    .grid-col-span-2{
+        grid-column: span 1;
+    }
+    .inner-card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
