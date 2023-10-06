@@ -1,0 +1,18 @@
+/* styling links */
+a{
+    text-decoration: none;
+    color:#15abdd;
+    font-size: 1em;;
+}
+
+ul li{
+    padding: 4px;
+}
+
+ul li a{
+    color: #15abdd;
+    font-size: 18px;
+    
+}
+
+

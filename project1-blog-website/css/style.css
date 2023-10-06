@@ -1,27 +1,9 @@
 @import url('./reset.css');
 @import url('./variables.css');
+@import url('./general.css');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-@import url('./responsive-layout.css');
 
-/* styling links */
-a{
-    text-decoration: none;
-    color:#15abdd;
-    font-size: 1em;;
-}
-/*  */
-/* #76c7e6 */
-
-ul li{
-    padding: 4px;
-}
-
-ul li a{
-    color: #15abdd;
-    font-size: 18px;
-    
-}
 
 .button-style-with-background{
     display: inline-block;
