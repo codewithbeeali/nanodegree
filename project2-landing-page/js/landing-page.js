@@ -5,16 +5,18 @@
 <div class="menuItem active" id="Grinding"><a href="#">Grinding</a></div>
 <div class="menuItem" id="Brewing"><a href="#">Brewing</a></div> */}
 const menuItemClassName = 'menuItem';
+
+// COMMENT: Use only one array to render the headers and section content to maintain consistency.
 const pageContent = [
     {
         menuName: 'Sourcing',
         id: 'Sourcing',
-        isActive: 0
+        isActive: 0 // COMMENT: Use boolean values instead of 0 and 1
     },
     {
         menuName: 'Roasting',
         id: 'Roasting',
-        isActive: 0
+        isActive: 1
     },
     {
         menuName: 'Grinding',
@@ -33,7 +35,7 @@ const sectionData = [
     {
         type: 'odd-section',
         imageSrc: 'images/section1-image.jpeg',
-        id: 'Section 1',
+        id: 'Section 1', // COMMENT: It is typically recommended to avoid using spaces in the id attribute because spaces are not valid characters for IDs. Consider using underscore (section_1) or hyphen (section-1) instead.
         number: '01',
         title: 'Sourcing',
         content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
@@ -51,6 +53,9 @@ const sectionData = [
 
 //Generating section data
 function generateSections(data) {
+
+    // COMMENT: Consider using innerHTML approach to add complex child elements to a parent div. This allows easy maintainence of code and gives a breif idea about the dom structure in a glance. 
+
     //generating section content dynamically
 
     //finding the parent of sections
@@ -137,15 +142,27 @@ function createNavigation() {
 
 
     //Step 3: Iterate through the array to build the navigation
+    // COMMENT: For loops can we written in 3 ways. Based on the implementation, using second or third approach would be ideal as it reduces the code length and improves readability  
+    // Traditional method: for(let i = 0; i < pageContent.length; i++) {}
+    // ForEach: pageContent.forEach((content) => {})
+    // ForOf: for (const content of pageContent) {}
+    
     for (let i = 0; i < pageContent.length; i++) {
         const menuItemDiv = document.createElement('div');
         menuItemDiv.className = `${menuItemClassName}`;
         menuItemDiv.id = `${pageContent[i].id}`;
+        
+        // COMMENT: If an element has only a single child, innerHTML could be another alternative to append an element.
+        // menuItemDiv.innerHTML = `<a href="#">${pageContent[i].menuName}</a>` 
         const anchorLink = document.createElement('a');
         anchorLink.textContent = `${pageContent[i].menuName}`;
         anchorLink.href = '#';
+
         menuItemDiv.append(anchorLink);
         if (pageContent[i].isActive) {
+            // COMMENT: Classes could be added or removed using the add/remove method on classList 
+            // menuItemDiv.classList.add('active')
+            // menuItemDiv.classList.remove('active')
             menuItemDiv.className = `${menuItemClassName} active`;
         }
         menu.append(menuItemDiv);
