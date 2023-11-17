@@ -16,7 +16,7 @@ ul {
 }
 
 a {
-    color: white;
+    color: blue;
 }
 
 p {
@@ -50,16 +50,10 @@ p {
 }
 
 .menuItem {
-    /* width: 106px;
-    height: 29px; */
     align-self: center;
     padding: 8px 16px;
 }
 
-/* .menuItem.active {
-    font-weight: bold;
-    background-color: red;
-} */
 
 /* Active class*/
 .active {
@@ -148,6 +142,20 @@ p {
     line-height: normal;
 }
 
+/* code for fixed navigation */
+.fixed-nav {
+    position: fixed;
+    top: 0;
+    left: 300px;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Add some margin to the content to prevent it from being hidden behind the fixed navbar */
+/* .sections {
+    margin-top: 60px;
+} */
+
 
 /* Responsiveness starts from here */
 @media screen and (max-width: 768px) {
@@ -175,6 +183,5 @@ p {
     p {
         font-size: 1.25rem;
     }
-
 
 }
