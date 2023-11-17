@@ -194,6 +194,7 @@ function createNavigation() {
 
 //Handling scrolling to section and figuring which menuItem was clicked
 menuContainer.addEventListener('click', function (event) {
+    event.preventDefault();
 
     let activeLinkId;
     let scrollToSectionId;
