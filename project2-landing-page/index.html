@@ -1,143 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Landing Page</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="./js/landing-page.js"></script>
+
+
 
 </head>
-<body>
+
+<body onload="renderPage();">
     <!-- Header Starts here -->
-    <div class="header" onclick="headerClick()">
-        
+    <div class="header">
+
         <div class="title">
             <header>
                 <h1 onclick="h1Click()">Nano Coffee</h1>
             </header>
         </div>
 
-        
-
-        <div class="navigation">
-            <div class="menu"> 
-                <div class="menuItem"><a href="#sourcing">Sourcing</a></div>
-                <div class="menuItem"><a href="#roasting">Roasting</a></div>
-                <div class="menuItem active"><a href="#grinding">Grinding</a></div>
-                <div class="menuItem"><a href="#brewing">Brewing</a></div>
-            </div>
+        <!-- navigation starts here -->
+        <div class="navigation" id="navContainer">
         </div>
-
+        <!-- navigation ends here -->
     </div>
     <!-- Header ends here -->
 
-<!-- sections starts here-->
-<div class="sections">
-    <!-- Section 1 starts here-->
-    <div class="odd-section section" id="sourcing">
-        <div class="imageContent">
-            <img src="images/section1-image.jpeg" width="100%" height="100%" alt="This is a image"/>
-        </div>
-        <div class="odd-content-area">
-           
-               <div class="odd-section-header">
-                <h1>01</h1>
-                <p>Sourcing</p>
-               </div>
-               <div class="odd-section-content">
-                <p>
-                    The journey begins with selecting high-quality coffee beans. 
-                    Coffee is often sourced from various regions worldwide, each offering unique 
-                    flavor profiles. Beans are chosen based on factors like origin, variety, 
-                    and processing methods.
-                </p>
-              </div>
-           
-        </div>
+    <!-- sections starts here-->
+    <div class="sections">
+
     </div>
-    <!-- Section 1 ends here-->
+    <!-- sections ends here-->
 
-    <div class="even-section section" id="roasting">
+    <script src="./js/landing-page.js"></script>
 
-        <div class="even-content-area">
-            
-                    <div class="even-section-header">
-                    <h1>02</h1>
-                    <p>Roasting</p>
-                    </div>
-                <div class="even-section-content">
-                    <p>
-                        The journey begins with selecting high-quality coffee beans. 
-                        Coffee is often sourced from various regions worldwide, each offering unique 
-                        flavor profiles. Beans are chosen based on factors like origin, variety, 
-                        and processing methods.
-                    </p>
-                </div>
- 
-             </div>
-       
-        <div class="imageContent">
-            <img src="images/roasting.jpeg" width="100%" height="100%"" alt="This is a image"/>
-        </div>
-    </div>
-
-
-    <div class="even-section section" id="grinding">
-
-        <div class="even-content-area">
-            
-                    <div class="even-section-header">
-                    <h1>02</h1>
-                    <p>Roasting</p>
-                    </div>
-                <div class="even-section-content">
-                    <p>
-                        The journey begins with selecting high-quality coffee beans. 
-                        Coffee is often sourced from various regions worldwide, each offering unique 
-                        flavor profiles. Beans are chosen based on factors like origin, variety, 
-                        and processing methods.
-                    </p>
-                </div>
- 
-             </div>
-       
-        <div class="imageContent">
-            <img src="images/roasting.jpeg" width="100%" height="100%"" alt="This is a image"/>
-        </div>
-    </div>
-
-
-    <div class="even-section section" id="brewing">
-
-        <div class="even-content-area">
-            
-                    <div class="even-section-header">
-                    <h1>02</h1>
-                    <p>Roasting</p>
-                    </div>
-                <div class="even-section-content">
-                    <p>
-                        The journey begins with selecting high-quality coffee beans. 
-                        Coffee is often sourced from various regions worldwide, each offering unique 
-                        flavor profiles. Beans are chosen based on factors like origin, variety, 
-                        and processing methods.
-                    </p>
-                </div>
- 
-             </div>
-       
-        <div class="imageContent">
-            <img src="images/roasting.jpeg" width="100%" height="100%"" alt="This is a image"/>
-        </div>
-    </div>
-
-
-
-</div>
-<!-- sections end here-->
-
-    
 </body>
+
 </html>

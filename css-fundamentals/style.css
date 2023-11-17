@@ -1,0 +1,38 @@
+.flex-container{
+    height: 544px;
+    width:100%;
+    border: 2px solid black;
+    display:flex;
+
+    /* Properties for Flex Container */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    align-items: center;
+
+}
+
+.item{
+    width: 200px;
+    height: 200px;
+    background-color: tomato;
+    border: 2px solid green;
+    margin:10px;
+    padding: 3px;
+
+    /* flex properties for a flex item */
+}
+
+#item-1{
+    /* Properties for Flex items */
+    order: 2;
+}
+
+#item-2{
+
+}
+
+#item-3{
+    order:40;
+
+}

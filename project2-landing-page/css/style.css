@@ -1,25 +1,25 @@
 /* General Styling */
-body{
+body {
     margin: 0;
     padding: 0;
 }
 
-h1{
+h1 {
     /* font-size: 1.2em; */
     padding: 8px;
-    color: #FFF; 
+    color: #FFF;
 }
 
-ul{
+ul {
     list-style-type: none;
-    
+
 }
 
-a{
-    color:white;
+a {
+    color: white;
 }
 
-p{
+p {
     font-size: 2em;
     font-weight: 100;
     margin: 0px;
@@ -30,32 +30,39 @@ p{
 
 /* styling of header starts here */
 .header {
-    max-width:100vw ;
-    height: 63px; /* This heigh needs to change */
+    max-width: 100vw;
     background-color: #3E2723;
     border: 1px solid black;
     display: flex;
     justify-content: space-between;
-    color:white;
+    color: white;
 }
 
-.navigation{
+.navigation {
     display: flex;
 }
 
-.menu{
+.menu {
     display: flex;
     justify-content: space-between;
-    
+    flex-wrap: wrap;
+
 }
 
-.menuItem{
-    width: 106px;
-    height: 29px;
+.menuItem {
+    /* width: 106px;
+    height: 29px; */
     align-self: center;
+    padding: 8px 16px;
 }
 
-.menuItem.active {
+/* .menuItem.active {
+    font-weight: bold;
+    background-color: red;
+} */
+
+/* Active class*/
+.active {
     font-weight: bold;
     background-color: red;
 }
@@ -64,44 +71,48 @@ p{
 
 
 /* Sections starts here */
-.sections{
+.sections {
     max-width: 100vw;
     /* background-color: red; */
 }
 
-.odd-section, .even-section{
+.odd-section,
+.even-section {
     display: flex;
-    height: calc(100vh - 64px);
-    color:white;
+    min-height: calc(100vh - 64px);
+    color: white;
 }
 
-.odd-section{
+.odd-section {
     background: #8D6E63;
 }
 
-.even-section{
-    background: #5D4037;;
+.even-section {
+    background: #5D4037;
+    ;
 }
 
-.odd-section .imageContent{
-    width:55vw;
+.odd-section .imageContent {
+    width: 55vw;
     flex-shrink: 0;
 }
 
 
-.even-section .imageContent{
-    width: 44.2vw;;
+.even-section .imageContent {
+    width: 44.vw;
+    ;
 }
 
 
-.odd-content-area, .even-content-area{
-    padding:16px;
-    flex:1;
+.odd-content-area,
+.even-content-area {
+    padding: 16px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-   
+
 }
 
 
@@ -112,12 +123,13 @@ p{
     justify-content: space-between;
 } */
 
-.odd-section-header{
-   align-self: flex-end; 
+.odd-section-header {
+    align-self: flex-end;
 }
 
 
-.odd-section-header p, .even-section-header p{
+.odd-section-header p,
+.even-section-header p {
     color: #FFF;
     font-family: Inter;
     font-size: 48px;
@@ -126,13 +138,43 @@ p{
     line-height: normal
 }
 
-.odd-section-content, .even-section-content{
-color: #FFF;
-font-family: Inter;
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+.odd-section-content,
+.even-section-content {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 
+/* Responsiveness starts from here */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 10px;
+        /* Adjust padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 24px;
+        /* Reduce font size for smaller screens */
+        padding: 4px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .odd-section .imageContent {
+        display: none;
+    }
+
+
+    .even-section .imageContent {
+        display: none;
+    }
+
+    p {
+        font-size: 1.25rem;
+    }
+
+
+}
