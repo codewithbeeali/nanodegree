@@ -194,10 +194,11 @@ function createNavigation() {
 
 //Handling scrolling to section and figuring which menuItem was clicked
 menuContainer.addEventListener('click', function (event) {
-    event.preventDefault();
 
+    // event.stopPropagation();
     let activeLinkId;
     let scrollToSectionId;
+
 
     //Looping through to find the current active class and deactive it
     //It also helps removes the class of active on the previous element
@@ -206,8 +207,6 @@ menuContainer.addEventListener('click', function (event) {
             const activeMenuItem = document.querySelector('.active');
             element.isActive = 0;
             activeMenuItem.classList.remove('active');
-
-
         }
         //Setting new menu item to be active
         if (element.id === event.target.id) {
@@ -219,7 +218,7 @@ menuContainer.addEventListener('click', function (event) {
     //setting the parent of active menu with the class 'active'
     event.target.parentElement.classList.add('active');
 
-    const section = document.querySelector(`#${scrollToSectionId}`);
+    const section = document.getElementById(scrollToSectionId);
     console.log(section);
     const sectioncoords = section.getBoundingClientRect();
 
@@ -229,6 +228,7 @@ menuContainer.addEventListener('click', function (event) {
         top: sectioncoords.top + window.scrollY,
         behavior: 'smooth'
     });
+
 
 
 });
