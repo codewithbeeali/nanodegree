@@ -21,7 +21,7 @@ const pageContent = [
     {
         menuName: 'Grinding',
         id: 'Grinding',
-        isActive: 1
+        isActive: 0
     },
     {
         menuName: 'Brewing',
@@ -142,31 +142,30 @@ function createNavigation() {
 
 
     //Step 3: Iterate through the array to build the navigation
-    // COMMENT: For loops can we written in 3 ways. Based on the implementation, using second or third approach would be ideal as it reduces the code length and improves readability  
-    // Traditional method: for(let i = 0; i < pageContent.length; i++) {}
-    // ForEach: pageContent.forEach((content) => {})
-    // ForOf: for (const content of pageContent) {}
-    
-    for (let i = 0; i < pageContent.length; i++) {
+    pageContent.forEach(element => {
         const menuItemDiv = document.createElement('div');
-        menuItemDiv.className = `${menuItemClassName}`;
-        menuItemDiv.id = `${pageContent[i].id}`;
-        
-        // COMMENT: If an element has only a single child, innerHTML could be another alternative to append an element.
-        // menuItemDiv.innerHTML = `<a href="#">${pageContent[i].menuName}</a>` 
-        const anchorLink = document.createElement('a');
-        anchorLink.textContent = `${pageContent[i].menuName}`;
-        anchorLink.href = '#';
+        //className = `${menuItemClassName}`;
+        menuItemDiv.classList.add(menuItemClassName);
+        //menuItemDiv.id = `${pageContent[i].id}`;
+        menuItemDiv.id = element.id;
 
+        const anchorLink = document.createElement('a');
+        //anchorLink.textContent = `${pageContent[i].menuName}`;
+        anchorLink.textContent = element.menuName;
+        anchorLink.href = '#';
         menuItemDiv.append(anchorLink);
-        if (pageContent[i].isActive) {
+
+        if (element.isActive) {
+            console.log('i am inside active')
             // COMMENT: Classes could be added or removed using the add/remove method on classList 
             // menuItemDiv.classList.add('active')
             // menuItemDiv.classList.remove('active')
-            menuItemDiv.className = `${menuItemClassName} active`;
+            menuItemDiv.classList.add(menuItemClassName, 'active');
+            //menuItemDiv.className = `${menuItemClassName} active`;
         }
         menu.append(menuItemDiv);
-    }
+    });
+
     nav.append(menu);
 
 }
