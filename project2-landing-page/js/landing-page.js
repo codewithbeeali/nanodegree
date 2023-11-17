@@ -10,22 +10,26 @@ const menuItemClassName = 'menuItem';
 const pageContent = [
     {
         menuName: 'Sourcing',
-        id: 'Sourcing',
+        id: '1',
+        sectionId: 'Section-1',
         isActive: 0 // COMMENT: Use boolean values instead of 0 and 1
     },
     {
         menuName: 'Roasting',
-        id: 'Roasting',
+        id: '2',
+        sectionId: 'Section-2',
         isActive: 1
     },
     {
         menuName: 'Grinding',
-        id: 'Grinding',
+        id: '3',
+        sectionId: 'Section-3',
         isActive: 0
     },
     {
         menuName: 'Brewing',
-        id: 'Brewing',
+        id: '4',
+        sectionId: 'Section-4',
         isActive: 0
     }
 ];
@@ -35,7 +39,7 @@ const sectionData = [
     {
         type: 'odd-section',
         imageSrc: 'images/section1-image.jpeg',
-        id: 'Section 1', // COMMENT: It is typically recommended to avoid using spaces in the id attribute because spaces are not valid characters for IDs. Consider using underscore (section_1) or hyphen (section-1) instead.
+        id: 'Section-1', // COMMENT: It is typically recommended to avoid using spaces in the id attribute because spaces are not valid characters for IDs. Consider using underscore (section_1) or hyphen (section-1) instead.
         number: '01',
         title: 'Sourcing',
         content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
@@ -43,13 +47,31 @@ const sectionData = [
     {
         type: 'even-section',
         imageSrc: 'images/roasting.jpeg',
-        id: 'Section 2',
+        id: 'Section-2',
         number: '02',
         title: 'Roasting',
+        content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
+    },
+    {
+        type: 'odd-section',
+        imageSrc: 'images/section1-image.jpeg',
+        id: 'Section-3', //3COMMENT: It is typically recommended to avoid using spaces in the id attribute because spaces are not valid characters for IDs. Consider using underscore (section_1) or hyphen (section-1) instead.
+        number: '03',
+        title: 'Grinding',
+        content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
+    },
+    {
+        type: 'even-section',
+        imageSrc: 'images/roasting.jpeg',
+        id: 'Section-4',
+        number: '04',
+        title: 'Brewing',
         content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
     }
 
 ];
+
+const menuContainer = document.getElementById('navContainer');
 
 //Generating section data
 function generateSections(data) {
@@ -64,10 +86,12 @@ function generateSections(data) {
     for (let i = 0; i < data.length; i++) {
         const sectionDiv = document.createElement('div');
         sectionDiv.className = data[i].type;
+        sectionDiv.id = data[i].id;
 
         //Section content area div
         const contentAreaDiv = document.createElement('div');
         contentAreaDiv.className = data[i].type.includes('odd') ? 'odd-content-area' : 'even-content-area';
+
 
         //Section header div
         const sectionHeaderDiv = document.createElement('div');
@@ -144,15 +168,13 @@ function createNavigation() {
     //Step 3: Iterate through the array to build the navigation
     pageContent.forEach(element => {
         const menuItemDiv = document.createElement('div');
-        //className = `${menuItemClassName}`;
         menuItemDiv.classList.add(menuItemClassName);
-        //menuItemDiv.id = `${pageContent[i].id}`;
-        menuItemDiv.id = element.id;
+        menuItemDiv.id = element.menuName;
 
         const anchorLink = document.createElement('a');
-        //anchorLink.textContent = `${pageContent[i].menuName}`;
         anchorLink.textContent = element.menuName;
         anchorLink.href = '#';
+        anchorLink.id = element.id;
         menuItemDiv.append(anchorLink);
 
         if (element.isActive) {
@@ -170,3 +192,42 @@ function createNavigation() {
 
 }
 
+//Handling scrolling to section and figuring which menuItem was clicked
+menuContainer.addEventListener('click', function (event) {
+
+    let activeLinkId;
+    let scrollToSectionId;
+
+    //Looping through to find the current active class and deactive it
+    //It also helps removes the class of active on the previous element
+    pageContent.forEach(element => {
+        if (element.isActive === 1) {
+            const activeMenuItem = document.querySelector('.active');
+            element.isActive = 0;
+            activeMenuItem.classList.remove('active');
+
+
+        }
+        //Setting new menu item to be active
+        if (element.id === event.target.id) {
+            scrollToSectionId = element.sectionId;
+            element.isActive = 1;
+            activeLinkId = element.id;
+        }
+    });
+    //setting the parent of active menu with the class 'active'
+    event.target.parentElement.classList.add('active');
+
+    const section = document.querySelector(`#${scrollToSectionId}`);
+    console.log(section);
+    const sectioncoords = section.getBoundingClientRect();
+
+    //scroll to section
+    //window.scrollTo(sectioncoords.left,sectioncoords.top);
+    window.scrollTo({
+        top: sectioncoords.top + window.scrollY,
+        behavior: 'smooth'
+    });
+
+
+});
