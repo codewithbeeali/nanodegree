@@ -37,7 +37,7 @@ const pageContent = [
 
 const sectionData = [
     {
-        type: 'odd-section',
+        type: 'odd-section section',
         imageSrc: 'images/section1-image.jpeg',
         id: 'Section-1', // COMMENT: It is typically recommended to avoid using spaces in the id attribute because spaces are not valid characters for IDs. Consider using underscore (section_1) or hyphen (section-1) instead.
         number: '01',
@@ -45,7 +45,7 @@ const sectionData = [
         content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
     },
     {
-        type: 'even-section',
+        type: 'even-section section',
         imageSrc: 'images/roasting.jpeg',
         id: 'Section-2',
         number: '02',
@@ -53,7 +53,7 @@ const sectionData = [
         content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
     },
     {
-        type: 'odd-section',
+        type: 'odd-section section',
         imageSrc: 'images/section1-image.jpeg',
         id: 'Section-3', //3COMMENT: It is typically recommended to avoid using spaces in the id attribute because spaces are not valid characters for IDs. Consider using underscore (section_1) or hyphen (section-1) instead.
         number: '03',
@@ -61,7 +61,7 @@ const sectionData = [
         content: 'The journey begins with selecting high-quality coffee beans.Coffee is often sourced from various regions worldwide, each offering unique flavor profiles. Beans are chosen based on factors like origin, variety,and processing methods.'
     },
     {
-        type: 'even-section',
+        type: 'even-section section',
         imageSrc: 'images/roasting.jpeg',
         id: 'Section-4',
         number: '04',
@@ -75,7 +75,6 @@ const menuContainer = document.getElementById('navContainer');
 
 //Generating section data
 function generateSections(data) {
-
     // COMMENT: Consider using innerHTML approach to add complex child elements to a parent div. This allows easy maintainence of code and gives a breif idea about the dom structure in a glance. 
 
     //generating section content dynamically
@@ -110,7 +109,7 @@ function generateSections(data) {
         sectionContentDiv.className = data[i].type.includes('odd') ? 'odd-section-content' : 'even-section-content';
         let contentParagraph = document.createElement('p');
         contentParagraph = data[i].content;
-        sectionContentDiv.append(contentParagraph);
+        sectionContentDiv.append(contentParagraph); // Change fontsize of content
 
         contentAreaDiv.append(sectionHeaderDiv);
         contentAreaDiv.append(sectionContentDiv);
@@ -249,3 +248,37 @@ const navigation = document.getElementById('navContainer');
 //     }
 // });
 
+
+const sections = document.querySelectorAll('.section');
+
+function isInView(element) {
+    const section = element.getBoundingClientRect();
+    
+    if (section.top >= 0 && section.top <= window.innerHeight) {
+        // Top half is in view
+        const heightInView = window.innerHeight - section.top
+        return heightInView > window.innerHeight/2
+
+    } else if (section.bottom >= 0 && section.bottom <= window.innerHeight) {
+        // Bottom half is in view
+        return section.bottom > window.innerHeight/2
+    }
+}
+
+function updateInViewSection() {
+    sections.forEach((section, index) => {
+        if (isInView(section)) {
+            // set active class
+            console.log(section.getAttribute("data-section"))
+
+            document.getElementById(section.getAttribute("data-section")).classList.add("active")
+
+        } else {
+            document.getElementById(section.getAttribute("data-section")).classList.remove("active")
+
+            // remove active class
+        }
+    });
+}
+
+window.addEventListener("scroll", updateInViewSection);
