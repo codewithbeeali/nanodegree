@@ -20,7 +20,7 @@ a {
 }
 
 p {
-    font-size: 2em;
+    font-size: 2rem;
     font-weight: 100;
     margin: 0px;
     font-weight: normal;
@@ -93,7 +93,7 @@ p {
 
 
 .even-section .imageContent {
-    width: 44.vw;
+    width: 44vw;
     ;
 }
 
@@ -149,6 +149,11 @@ p {
     left: 300px;
     width: 100%;
     z-index: 1000;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
 }
 
 /* Add some margin to the content to prevent it from being hidden behind the fixed navbar */

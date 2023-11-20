@@ -237,15 +237,15 @@ menuContainer.addEventListener('click', function (event) {
 const navigation = document.getElementById('navContainer');
 
 // Listen for the scroll event
-window.addEventListener('scroll', function () {
-    // Get the current scroll position
-    const scrollPosition = window.scrollY;
+// window.addEventListener('scroll', function () {
+//     // Get the current scroll position
+//     const scrollPosition = window.scrollY;
 
-    // Add or remove the 'fixed-nav' class based on the scroll position
-    if (scrollPosition > 0) {
-        navigation.classList.add('fixed-nav');
-    } else {
-        navigation.classList.remove('fixed-nav');
-    }
-});
+//     // Add or remove the 'fixed-nav' class based on the scroll position
+//     if (scrollPosition > 0) {
+//         navigation.classList.add('fixed-nav');
+//     } else {
+//         navigation.classList.remove('fixed-nav');
+//     }
+// });
 
