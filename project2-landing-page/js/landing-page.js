@@ -146,7 +146,7 @@ function createImageDiv(src) {
 function renderPage() {
     console.log('Page rendering from body loading is calld.')
     createNavigation();
-    generateSections(sectionData);
+    // generateSections(sectionData);
 }
 
 function createNavigation() {
