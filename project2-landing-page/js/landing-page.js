@@ -127,9 +127,9 @@ function generateSections(data) {
 
 // Function to create the image div
 function createImageDiv(src) {
-    var imageDiv = document.createElement('div');
+    const imageDiv = document.createElement('div');
     imageDiv.className = 'imageContent';
-    var image = document.createElement('img');
+    let image = document.createElement('img');
     image.src = src;
     image.alt = 'This is an image';
     image.style.width = '100%';
@@ -141,13 +141,18 @@ function createImageDiv(src) {
 
 
 
-
+/**
+ * @description This method is loaded on onload event of page and create a dynamic navigation
+ */
 function renderPage() {
     console.log('Page rendering from body loading is calld.')
     createNavigation();
     // generateSections(sectionData);
 }
 
+/**
+ * @description This method is used to create dynamic navigation
+ */
 function createNavigation() {
     //Step 1: Find the parent div called 'Navigation' using querySelector
     //Step 2: Create an empty div and apply a class on it called 'menu'
@@ -160,38 +165,44 @@ function createNavigation() {
     const nav = document.querySelector('.navigation');
 
     //Step 2: Create an empty div and apply a class on it called 'menu'
-    const menu = document.createElement('div');
-    menu.className = 'menu';
+    //const menu = document.createElement('div');
+    const undorderedMenu = document.getElementById('navbar__list');
+    undorderedMenu.className = 'menu';
 
 
     //Step 3: Iterate through the array to build the navigation
     pageContent.forEach(element => {
-        const menuItemDiv = document.createElement('div');
-        menuItemDiv.classList.add(menuItemClassName);
-        menuItemDiv.id = element.menuName;
+        const menuListItem = document.createElement('li');
+        menuListItem.classList.add(menuItemClassName);
+        menuListItem.id = element.menuName;
 
         const anchorLink = document.createElement('a');
         anchorLink.textContent = element.menuName;
-        anchorLink.href = '#';
+        //anchorLink.href = '#';
         anchorLink.id = element.id;
-        menuItemDiv.append(anchorLink);
+        menuListItem.append(anchorLink);
 
         if (element.isActive) {
             console.log('i am inside active')
             // COMMENT: Classes could be added or removed using the add/remove method on classList 
             // menuItemDiv.classList.add('active')
             // menuItemDiv.classList.remove('active')
-            menuItemDiv.classList.add(menuItemClassName, 'active');
+            menuListItem.classList.add(menuItemClassName, 'active');
             //menuItemDiv.className = `${menuItemClassName} active`;
         }
-        menu.append(menuItemDiv);
+        undorderedMenu.append(menuListItem);
     });
 
-    nav.append(menu);
+    nav.append(undorderedMenu);
 
 }
 
-//Handling scrolling to section and figuring which menuItem was clicked
+/**
+ * @description Handling scrolling to section and figuring which menuItem was clicked
+ * @param {click} click - This is used to take the click event 
+ * @function - This method takes a callback function which in turns takes an event.
+ */
+//
 menuContainer.addEventListener('click', function (event) {
 
     // event.stopPropagation();
@@ -206,7 +217,10 @@ menuContainer.addEventListener('click', function (event) {
         if (element.isActive === 1) {
             const activeMenuItem = document.querySelector('.active');
             element.isActive = 0;
-            activeMenuItem.classList.remove('active');
+            //Fixed the null issue
+            if (activeMenuItem !== null && activeMenuItem !== undefined) {
+                activeMenuItem.classList.remove('active');
+            }
         }
         //Setting new menu item to be active
         if (element.id === event.target.id) {
@@ -233,50 +247,51 @@ menuContainer.addEventListener('click', function (event) {
 
 });
 
+
 const navigation = document.getElementById('navContainer');
-
-// Listen for the scroll event
-// window.addEventListener('scroll', function () {
-//     // Get the current scroll position
-//     const scrollPosition = window.scrollY;
-
-//     // Add or remove the 'fixed-nav' class based on the scroll position
-//     if (scrollPosition > 0) {
-//         navigation.classList.add('fixed-nav');
-//     } else {
-//         navigation.classList.remove('fixed-nav');
-//     }
-// });
-
-
 const sections = document.querySelectorAll('.section');
 
+/**
+ * @param {element} element - This is a section element to figure out whether a particular function is in 
+ * view port or not
+ * @returns - A true or false value which represents whether something is in view port or not
+ */
 function isInView(element) {
     const section = element.getBoundingClientRect();
-    
-    if (section.top >= 0 && section.top <= window.innerHeight) {
+
+    if (section.top < 0 && section.bottom > window.innerHeight) {
+        return true;
+    }
+    else if (section.top >= 0 && section.top <= window.innerHeight) {
         // Top half is in view
         const heightInView = window.innerHeight - section.top
-        return heightInView > window.innerHeight/2
+        return heightInView > window.innerHeight / 2
 
     } else if (section.bottom >= 0 && section.bottom <= window.innerHeight) {
         // Bottom half is in view
-        return section.bottom > window.innerHeight/2
+        return section.bottom > window.innerHeight / 2
     }
 }
 
+/**
+ * @description - This method is used to make the menu item active based on the view port
+ */
 function updateInViewSection() {
     sections.forEach((section, index) => {
+        const element = document.getElementById(section.getAttribute("data-section"));
+        if (!element) {
+            return false;
+        }
+
         if (isInView(section)) {
             // set active class
             console.log(section.getAttribute("data-section"))
 
-            document.getElementById(section.getAttribute("data-section")).classList.add("active")
+            element.classList.add("active")
 
         } else {
-            document.getElementById(section.getAttribute("data-section")).classList.remove("active")
 
-            // remove active class
+            element.classList.remove("active")
         }
     });
 }
