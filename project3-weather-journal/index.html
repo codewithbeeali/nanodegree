@@ -18,7 +18,7 @@
             zipCode = zipCode.value;
             comments = comments.value;
             console.log(zipCode , comments );
-            if(zipCode && comments){
+            if((zipCode && zipCode.trim().length > 0) && (comments && comments.trim().length > 0)){
                 document.getElementById('generate').removeAttribute('disabled');
             }
             else{
