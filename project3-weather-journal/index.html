@@ -8,10 +8,11 @@
 <script>
     const API_KEY ='6ea98b0695800adff83129a68604944e';
     function validateFormData(){
-        console.log('== Inside validateFormData ===');
         let zipCode = document.getElementById('zip');
         let comments = document.getElementById('feelings');
 
+
+        console.log('== Inside validateFormData ===');
         if(zipCode === null && comments === null){
             console.log('element not found');
         }
@@ -30,10 +31,17 @@
     }
 
     async function getWeatherData(){
+        let zipCode = document.getElementById('zip');
         console.log('--- inside weatherData ----');
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=E14,GB&appid=${API_KEY}`) 
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode.value},AU&appid=${API_KEY}`) 
         const weatherData = await response.json();
         console.log(weatherData)
+
+        const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${API_KEY}`)
+            const weatherJson = await weatherResponse.json()
+            return weatherJson
+
+        
     }
 
 </script>
