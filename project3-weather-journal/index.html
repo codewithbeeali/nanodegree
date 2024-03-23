@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <script>
+    const API_KEY ='6ea98b0695800adff83129a68604944e';
     function validateFormData(){
         console.log('== Inside validateFormData ===');
         let zipCode = document.getElementById('zip');
@@ -20,6 +21,7 @@
             console.log(zipCode , comments );
             if((zipCode && zipCode.trim().length > 0) && (comments && comments.trim().length > 0)){
                 document.getElementById('generate').removeAttribute('disabled');
+                
             }
             else{
                 document.getElementById('generate').setAttribute('disabled','true');
@@ -27,9 +29,11 @@
         }
     }
 
-    function getWeatherData(){
+    async function getWeatherData(){
         console.log('--- inside weatherData ----');
-
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=E14,GB&appid=${API_KEY}`) 
+        const weatherData = await response.json();
+        console.log(weatherData)
     }
 
 </script>
