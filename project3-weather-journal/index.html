@@ -7,20 +7,25 @@
 <link rel="stylesheet" href="css/style.css">
 <script>
     const API_KEY ='6ea98b0695800adff83129a68604944e';
+    const baseURL_ZIPCODE = 'http://api.openweathermap.org/geo/1.0/zip';
+    const weatherData_LAT_LONG='https://api.openweathermap.org/data/2.5/weather';
     function validateFormData(){
         let zipCode = document.getElementById('zip');
         let comments = document.getElementById('feelings');
+        let countryInitial = document.getElementById('countryInitial');
 
 
         console.log('== Inside validateFormData ===');
-        if(zipCode === null && comments === null){
+        if(zipCode === null && comments === null && countryInitial === null){
             console.log('element not found');
         }
         else{
             zipCode = zipCode.value;
             comments = comments.value;
-            console.log(zipCode , comments );
-            if((zipCode && zipCode.trim().length > 0) && (comments && comments.trim().length > 0)){
+            countryInitial = countryInitial.value;
+            console.log(zipCode , comments, countryInitial );
+            if((zipCode && zipCode.trim().length > 0) && (comments && comments.trim().length > 0)
+                && (countryInitial && countryInitial.trim().length > 0)){
                 document.getElementById('generate').removeAttribute('disabled');
                 
             }
@@ -30,19 +35,36 @@
         }
     }
 
-    async function getWeatherData(){
-        let zipCode = document.getElementById('zip');
+    async function getWeatherData(zipCode,country,baseURL_ZIPCODE,weatherData_LAT_LONG){
+        // let zipCode = document.getElementById('zip');
+        // let countryInitial = document.getElementById('countryInitial');
         console.log('--- inside weatherData ----');
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipCode.value},AU&appid=${API_KEY}`) 
+        const response = await fetch(`${baseURL_ZIPCODE}?zip=${zipCode},${country}&appid=${API_KEY}`) 
         const weatherData = await response.json();
         console.log(weatherData)
 
-        const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${API_KEY}`)
+        const weatherResponse = await fetch(`${weatherData_LAT_LONG}?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${API_KEY}`)
             const weatherJson = await weatherResponse.json()
-            return weatherJson
+            return weatherJson;
 
-        
     }
+
+     function handleClickEvent(){
+        console.log('==== inside handleClickEvent ===')
+        //Code to execute when the element with id 'generate' is clicked
+        let zipCode = document.getElementById('zip');
+        let countryInitial = document.getElementById('countryInitial');
+        const weatherData =  getWeatherData(zipCode.value, countryInitial.value, baseURL_ZIPCODE, weatherData_LAT_LONG);
+
+        console.log('finished click event');
+
+    }
+
+    //Add event listener to the element with id 'generate'
+    document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('generate').addEventListener('click', handleClickEvent);
+    });
+    
 
 </script>
 </head>
@@ -55,10 +77,14 @@
     <label for="zip">Enter Zipcode here</label>
     <input type="text" id="zip" placeholder="enter zip code here" onkeyup="validateFormData();">
   </div>
+  <div class ="holder countryInitial">
+    <label for="countryInitial">Enter country initial here</label>
+    <input type="text" id="countryInitial" placeholder="Enter country initial e.g. AU" onkeyup="validateFormData();">
+  </div>
   <div class ="holder feel">
     <label for="feelings">How are you feeling today?</label>
     <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50" onkeyup="validateFormData();"></textarea>
-    <button id="generate" type = "submit" onclick="getWeatherData();" disabled> Generate </button>
+    <button id="generate" type = "submit" disabled> Generate </button>
   </div>
   <!-- <div class ="holder entry">
     <div class = "title">Most Recent Entry</div>
