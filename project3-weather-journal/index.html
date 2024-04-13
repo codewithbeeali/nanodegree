@@ -49,13 +49,13 @@
 
     }
 
-     function handleClickEvent(){
+     async function handleClickEvent(){
         console.log('==== inside handleClickEvent ===')
         //Code to execute when the element with id 'generate' is clicked
         let zipCode = document.getElementById('zip');
         let countryInitial = document.getElementById('countryInitial');
-        const weatherData =  getWeatherData(zipCode.value, countryInitial.value, baseURL_ZIPCODE, weatherData_LAT_LONG);
-
+        const weatherData =  await getWeatherData(zipCode.value, countryInitial.value, baseURL_ZIPCODE, weatherData_LAT_LONG);
+        console.log(weatherData);
         console.log('finished click event');
 
     }
