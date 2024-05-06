@@ -44,21 +44,45 @@
         console.log(weatherData)
 
         const weatherResponse = await fetch(`${weatherData_LAT_LONG}?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${API_KEY}`)
-            const weatherJson = await weatherResponse.json()
-            return weatherJson;
-
+        const weatherJson = await weatherResponse.json()
+        const {lat,lon,name} = weatherData;
+        const {temp, temp_min, temp_max} = weatherJson.main;
+            const obj = {
+              latitude: lat,
+              longtitude:lon,
+              cityName: name,
+              temperature: temp,
+              minTemp: temp_min,
+              maxTemp: temp_max
+              
+            };
+            return obj;
     }
 
-     async function handleClickEvent(){
+   async function postWeatherData(weatherData){
+
+    const weatherResponse = await fetch(`http://localhost:3000/post-weather-data`,{
+      method: "POST", 
+      body: weatherData
+    });
+    const weatherJson = await weatherResponse.json()
+    console.log(weatherJson)
+
+   }
+   
+    async function handleClickEvent(){
         console.log('==== inside handleClickEvent ===')
         //Code to execute when the element with id 'generate' is clicked
         let zipCode = document.getElementById('zip');
         let countryInitial = document.getElementById('countryInitial');
         const weatherData =  await getWeatherData(zipCode.value, countryInitial.value, baseURL_ZIPCODE, weatherData_LAT_LONG);
         console.log(weatherData);
+        console.log('Calling postWeatherData api');
+        postWeatherData(weatherData);
         console.log('finished click event');
 
     }
+
 
     //Add event listener to the element with id 'generate'
     document.addEventListener('DOMContentLoaded', function(){
