@@ -39,34 +39,51 @@
         // let zipCode = document.getElementById('zip');
         // let countryInitial = document.getElementById('countryInitial');
         console.log('--- inside weatherData ----');
-        const response = await fetch(`${baseURL_ZIPCODE}?zip=${zipCode},${country}&appid=${API_KEY}`) 
-        const weatherData = await response.json();
-        console.log(weatherData)
+        // const response = await fetch(`${baseURL_ZIPCODE}?zip=${zipCode},${country}&appid=${API_KEY}`) 
+        // const weatherData = await response.json();
+        // console.log(weatherData)
 
-        const weatherResponse = await fetch(`${weatherData_LAT_LONG}?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${API_KEY}`)
-        const weatherJson = await weatherResponse.json()
-        const {lat,lon,name} = weatherData;
-        const {temp, temp_min, temp_max} = weatherJson.main;
-            const obj = {
-              latitude: lat,
-              longtitude:lon,
-              cityName: name,
-              temperature: temp,
-              minTemp: temp_min,
-              maxTemp: temp_max
-              
+        // const weatherResponse = await fetch(`${weatherData_LAT_LONG}?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${API_KEY}`)
+        // const weatherJson = await weatherResponse.json()
+        // const {lat,lon,name} = weatherData;
+        // const {temp, temp_min, temp_max} = weatherJson.main;
+            // const obj = {
+            //   latitude: lat,
+            //   longtitude:lon,
+            //   cityName: name,
+            //   temperature: temp,
+            //   minTemp: temp_min,
+            //   maxTemp: temp_max
+            // };
+            // return obj;
+
+            return obj = {
+              latitude: "19.21",
+              longtitude: "72.24",
+              cityName: "Sydney",
+              temperature: "17.4",
+              minTemp: "5",
+              maxTemp: "40"
             };
-            return obj;
     }
 
-   async function postWeatherData(weatherData){
-
+   async function postWeatherData(weatherData){    
     const weatherResponse = await fetch(`http://localhost:3000/post-weather-data`,{
       method: "POST", 
-      body: weatherData
+      body: JSON.stringify(weatherData),
+      headers: {
+        "Content-Type" : "application/json"
+      }
     });
     const weatherJson = await weatherResponse.json()
     console.log(weatherJson)
+
+    if (weatherJson.success) {
+      // Get all weather Information here
+      // And render it in a table
+
+    }
+
 
    }
    

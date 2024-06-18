@@ -6,6 +6,8 @@ app.use(express.json())
 app.use(cors())
 
 
+const weatherData = []
+
 //creating an GET API
 // app.get('/', function (req, res) {
 //   res.send('Hello World')
@@ -18,13 +20,33 @@ app.use(cors())
 //   })
 
 //Post-API , always take two arguments
-app.post('/post-weather-data', (request,response) => {
-    console.log(request.body);
-    response.send({ 
-        success:true 
-    });
-    
+app.post('/post-weather-data', (request,response) => {    
+    if (request.body) {
+        // Write in DB
+        weatherData.push(request.body)
+        response.send({ 
+            success:true,
+            data: weatherData 
+        });
+    } else {
+        response.status(400).send({ 
+            success: false 
+        });
+    }
+    // Save this Body
 });
+
+
+app.get('/get-weather-data', (request,response) => {    
+    response.send({ 
+        success:true,
+        data: weatherData 
+    })
+});
+
+
+
+
 
 app.listen(3000, () => {
     console.log('server started, running on port 3000');
